@@ -1,4 +1,4 @@
-module github.com/dondish/go-cluster
+module go.neonxp.dev/cluster
 
 require (
 	github.com/stretchr/objx v0.2.0 // indirect

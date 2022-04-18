@@ -1,5 +1,5 @@
 // TODO Add heartbeat mechanism
-package go_cluster
+package cluster
 
 import (
 	"encoding/gob"

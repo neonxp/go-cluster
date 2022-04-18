@@ -1,5 +1,5 @@
 // This file contains structs and functions for the nodes.
-package go_cluster
+package cluster
 
 import (
 	"encoding/gob"
@@ -78,7 +78,6 @@ func (n Node) Send(message Message, ids ...int) error {
 		} else if err := a.(*Connection).Write(message); err != nil {
 			return err
 		}
-
 	}
 	return nil
 }

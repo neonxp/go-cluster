@@ -1,10 +1,11 @@
-package go_cluster
+package cluster
 
 import (
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type TestMessage struct {
@@ -33,7 +34,6 @@ func TestCreateTwoNodeCluster(t *testing.T) {
 	defer master.Close()
 	time.Sleep(500 * time.Millisecond)
 	node, err := JoinCluster("localhost:5557", "localhost:5556", nil)
-
 	if err != nil {
 		fmt.Println("couldn't create node:", err)
 		assert.NotNil(t, err, "There shouldn't be an error while closing the slave")
@@ -69,7 +69,6 @@ func TestCreateTwoNodeCluster(t *testing.T) {
 	case <-time.After(time.Second):
 		t.Log("The test has timed out")
 	}
-
 }
 
 func TestCreateMultiNodeCluster(t *testing.T) {
@@ -77,7 +76,6 @@ func TestCreateMultiNodeCluster(t *testing.T) {
 	defer master.Close()
 	time.Sleep(500 * time.Millisecond)
 	node1, err := JoinCluster("localhost:5559", "localhost:5558", nil)
-
 	if err != nil {
 		fmt.Println("couldn't create node 1:", err)
 		assert.NotNil(t, err, "There shouldn't be an error while closing the slave")
@@ -86,7 +84,6 @@ func TestCreateMultiNodeCluster(t *testing.T) {
 	defer node1.Close()
 	time.Sleep(500 * time.Millisecond)
 	node2, err := JoinCluster("localhost:5560", "localhost:5558", nil)
-
 	if err != nil {
 		fmt.Println("couldn't create node 2:", err)
 		assert.NotNil(t, err, "There shouldn't be an error while closing the slave")
